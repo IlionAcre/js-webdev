@@ -47,14 +47,52 @@
 //     }
 // }
 
-function saludar(nombre, edad) {
-    console.log('asdasd')
-    return `Hola ${nombre}, tu edad es ${edad}.`
+// function saludar(nombre, edad) {
+//     console.log('asdasd')
+//     return `Hola ${nombre}, tu edad es ${edad}.`
+// }
+
+// const nombre = prompt('Como te llamas?');
+// const edadUsuario = prompt('Cuantos anos tienes?');
+
+// const resultado = saludar(nombre, edadUsuario) + 'asdasdasd';
+
+// console.log(resultado);
+
+
+
+
+// function nombreFuncion(parametros) {
+//   // Bloque de código
+//   return resultado; // (opcional)
+// }
+
+
+
+// function saludar(nombre) {
+//   console.log("Hola " + nombre + "!");
+// }
+
+// saludar("Ana"); // Hola Ana!
+
+// function saludar() {
+//     console.log("Hola");
+// }
+
+// saludar() // Muestra Hola en consola
+
+
+// function sumar(a, b) {
+//   return a + b; 
+// }
+
+// let resultado = sumar(3, 4);
+// console.log(resultado); // 7
+
+function sumar(a, b) {
+  console.log(a + b); 
 }
 
-const nombre = prompt('Como te llamas?');
-const edadUsuario = prompt('Cuantos anos tienes?');
-
-const resultado = saludar(nombre, edadUsuario) + 'asdasdasd';
-
-console.log(resultado);
+let resultado = sumar(3, 4); 
+// imprime 7 en consola, pero 
+// resultado vale undefined
