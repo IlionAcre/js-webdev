@@ -12,9 +12,9 @@
 
 // console.log("Bucle terminado");
 
-// i = 0;
+// let i = 0;
 
-// while (i < 10) {
+// while (i < 20) {
 //   i++;
 
 //   if (i % 2 === 0) {
@@ -112,6 +112,7 @@ function encontrarUsuario(nombre, lista) {
 }
 
 let eleccionUsuario;
+let usuario;
 
 while (true) {
   eleccionUsuario = prompt("Por favor digite su nombre de usuario: ");
@@ -121,10 +122,33 @@ while (true) {
     break;
   }
 
-  let usuario = encontrarUsuario(eleccionUsuario, listaUsuarios);
+  usuario = encontrarUsuario(eleccionUsuario, listaUsuarios);
 
   if (usuario) {
     console.log("Usuario encontrado " + usuario["nombre"]);
     break;
   }
+}
+
+let eleccionContrasena;
+let intentos = 3;
+
+while (intentos > 0) {
+  eleccionContrasena = prompt("Digite su contrasena.");
+
+  if (eleccionContrasena === usuario.contrasena) {
+    console.log("Contrasena correcta.");
+    break;
+  } else {
+    console.log("Contrasena incorrecta.");
+  }
+
+  intentos--; // En algun punto intentos se convierte en 0
+
+  if (intentos === 0) {
+    console.log("La cuenta ha sido bloqueada por muchos intentos.");
+    break;
+  }
+
+  console.log("Intentos restantes " + intentos);
 }
