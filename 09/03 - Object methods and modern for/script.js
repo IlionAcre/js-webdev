@@ -24,42 +24,6 @@
 //   console.log(i);
 // }
 
-let listaUsuarios = [
-  { nombre: "ana123", contrasena: "asdf123" },
-  { nombre: "javier24", contrasena: "fresas" },
-  { nombre: "sofia_cantante", contrasena: "c0m1n0" },
-  { nombre: "fernando", contrasena: "asdf123" },
-];
-
-function encontrarUsuario(nombre, lista) {
-  let usuario;
-  for (let i = 0; i < lista.length; i++) {
-    if (nombre === lista[i]["nombre"]) {
-      usuario = lista[i];
-    }
-  }
-  return usuario;
-}
-
-let eleccionUsuario;
-
-while (true) {
-  eleccionUsuario = prompt("Por favor digite su nombre de usuario: ");
-
-  if (eleccionUsuario.toLowerCase() === "cerrar") {
-    console.log("Ha decidido cerrar la sesion.");
-    break;
-  }
-
-  if (encontrarUsuario(eleccionUsuario, listaUsuarios)) {
-    console.log(
-      "Usuario encontrado " +
-        encontrarUsuario(eleccionUsuario, listaUsuarios)["nombre"]
-    );
-    break;
-  }
-}
-
 // let gonzalo = {
 //   primerNombre: "Gonzalo",
 //   ultimoNombre: "Garcia",
@@ -129,3 +93,38 @@ while (true) {
 // console.log(andres.edad);
 // delete andres.edad;
 // console.log(andres.edad);
+
+let listaUsuarios = [
+  { nombre: "ana123", contrasena: "asdf123" },
+  { nombre: "javier24", contrasena: "fresas" },
+  { nombre: "sofia_cantante", contrasena: "c0m1n0" },
+  { nombre: "fernando", contrasena: "asdf123" },
+];
+
+function encontrarUsuario(nombre, lista) {
+  let usuario;
+  for (let i = 0; i < lista.length; i++) {
+    if (nombre === lista[i]["nombre"]) {
+      usuario = lista[i];
+    }
+  }
+  return usuario;
+}
+
+let eleccionUsuario;
+
+while (true) {
+  eleccionUsuario = prompt("Por favor digite su nombre de usuario: ");
+
+  if (eleccionUsuario.toLowerCase() === "cerrar") {
+    console.log("Ha decidido cerrar la sesion.");
+    break;
+  }
+
+  let usuario = encontrarUsuario(eleccionUsuario, listaUsuarios);
+
+  if (usuario) {
+    console.log("Usuario encontrado " + usuario["nombre"]);
+    break;
+  }
+}
