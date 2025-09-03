@@ -15,7 +15,6 @@
 
 // console.log(Boolean(nombre));
 
-
 // console.log(Boolean(0));
 // console.log(Boolean(''));
 // console.log(Boolean(NaN));
@@ -36,7 +35,6 @@
 // } else {
 //   console.log(comida);
 // }
-
 
 // && = and, || = or, ! = not
 
@@ -83,11 +81,10 @@
 // console.log(`Tu bebida es ${bebida}`);
 
 // let nota = 43;
-// let mensaje = nota >= 90 ? "Excelente" 
-//               : nota >= 60 ? "Aprobado" 
-//               : "Reprobado"; 
+// let mensaje = nota >= 90 ? "Excelente"
+//               : nota >= 60 ? "Aprobado"
+//               : "Reprobado";
 // console.log(mensaje);
-
 
 // if (nota >= 90) {
 //   mensaje = "Excelente";
@@ -98,3 +95,15 @@
 //     mensaje = "Reprobado";
 //   }
 // }
+
+let i = 0;
+
+while (i < 10) {
+  i++;
+
+  if (i % 2 === 0) {
+    continue;
+  }
+
+  console.log(i);
+}

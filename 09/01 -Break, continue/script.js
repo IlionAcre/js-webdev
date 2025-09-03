@@ -30,17 +30,17 @@
 // ***
 // ****
 
-// function triangulo(num) {
-//   for (let i = 1; i <= num; i++) {
-//     let fila = "";
-//     for (let j = 1; j <= i; j++) {
-//       fila += "*";
-//     }
-//     console.log(fila);
-//   }
-// }
+function triangulo(num) {
+  for (let i = 1; i <= num; i++) {
+    let fila = "";
+    for (let j = 1; j <= num; j++) {
+      fila += "*";
+    }
+    console.log(fila);
+  }
+}
 
-// triangulo(10);
+triangulo(5);
 
 // Break
 
@@ -73,9 +73,11 @@
 //   (0, 7)
 // ];
 
-for (let i = 1; i <= 5; i++) {
-  console.log(`En este momento, la XXXXX es igual a ${i}`);
-  for (let j = 5; j >= 1; j--) {
-    console.log(`En este momento, la YYYYY es igual a ${j}`);
-  }
-}
+// const num = 4;
+
+// for (let i = 0; i < num; i++) {
+//   console.log(`LA I DEL FOR GRANDE ES IGUAL ${i}`);
+//   for (let j = 0; j <= i; j++) {
+//     console.log(`la j del for peque;o es igual a ${j}`);
+//   }
+// }
