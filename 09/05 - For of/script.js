@@ -16,15 +16,15 @@
 //   console.log(fruta);
 // }
 
-// let numeros = [2, 3, 5, 12];
+let numeros = [2, 3, 5, 12];
 
-// for (let numero of numeros) {
-//   console.log(numero - 10);
-// }
+for (let numero of numeros) {
+  console.log(numero - 10);
+}
 
-// for (let letra of fobia) {
-//   console.log(letra.toLowerCase());
-// }
+for (let letra of fobia) {
+  console.log(letra.toLowerCase());
+}
 
 let inventario = {
   manzana: { nombre: "manzana", precio: 600, cantidad: 20 },
