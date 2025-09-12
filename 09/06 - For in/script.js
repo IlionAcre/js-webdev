@@ -130,7 +130,7 @@ let companias = [
         name: "Ingeniería Civil",
         employees: [
           { name: "Felipe", role: "Ingeniero de Estructuras" },
-          { name: "Andrea", role: "Ingeniera de Obras" },
+          { name: "Andrea", role: "Ingeniera de Obras " },
         ],
       },
     ],

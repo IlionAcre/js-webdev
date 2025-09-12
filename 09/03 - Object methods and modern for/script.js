@@ -152,3 +152,5 @@ while (intentos > 0) {
 
   console.log("Intentos restantes " + intentos);
 }
+
+INVENTARIO = [{}];
