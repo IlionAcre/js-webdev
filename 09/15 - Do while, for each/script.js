@@ -94,5 +94,29 @@ let saludo = "Hola Sara, como estas?";
 
 // saludoDesarreglado = saludoDesarreglado.trimStart(); // Si quiero guardar el cambio en la misma varible
 
-let parrafo =
-  "   HoY QuIeRo PrAcTiCaR jAvAsCrIpT, EsToY HaCiEnDo EjErCiCiOs CoN StRiNgS y Me PaReCe DiVeRtIdO aPrEnDeR AsI.  ";
+// string.repeat(cantidades) -> Para repetir una string x cantidad de veces ''
+// 'a'.repear(8) = 'aaaaaaaa'
+
+// let parrafo =
+//   "   HoY QuIeRo PrAcTiCaR jAvAsCrIpT, EsToY HaCiEnDo EjErCiCiOs CoN StRiNgS y Me PaReCe DiVeRtIdO aPrEnDeR AsI.  ";
+// parrafo = parrafo.trim();
+// parrafo = parrafo.toLowerCase();
+// let primeraLetra = parrafo[0].toUpperCase();
+// let restoDeLetras = parrafo.slice(1);
+// console.log(primeraLetra);
+// console.log(restoDeLetras);
+// parrafo = primeraLetra + restoDeLetras;
+// console.log(parrafo);
+
+// console.log(parrafo[0].toLocaleUpperCase());
+// parra
+// console.log(parrafo);
+
+let nombre = "xxxxx";
+console.log(nombre);
+
+console.log(nombre + "an");
+
+console.log(nombre);
+
+let numTargeta = "123423453456"; // ********3456
