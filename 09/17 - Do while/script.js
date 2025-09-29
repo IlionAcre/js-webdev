@@ -31,3 +31,24 @@ console.log(dado);
 //   console.log(contador);
 //   contador++;
 // } while (contador < 5);
+
+function limpiarString(texto) {}
+
+function numCaracteres(string) {
+  return string.length;
+}
+
+function numPalabras() {}
+
+function palabraMasLarga() {}
+
+function palabraMasCorta() {}
+
+function frecuenciaPalabra() {}
+
+function palindromos() {
+  // 'Anita lava la tina' -> true
+  // 'Toca limpiar la string y juntar las letras'
+}
+
+function analizarTexto(texto) {}

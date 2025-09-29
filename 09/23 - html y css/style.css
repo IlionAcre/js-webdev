@@ -1,0 +1,23 @@
+h1 {
+  color: red;
+  background-color: black !important;
+}
+
+button {
+  height: 50px;
+  width: 100px;
+  font-family: Arial;
+  font-size: 20px;
+  border: 2px solid blue;
+  cursor: pointer;
+}
+
+.boton-en-descanso {
+  background-color: transparent;
+  color: black;
+}
+
+.boton-en-descanso:hover {
+  background-color: black;
+  color: white;
+}

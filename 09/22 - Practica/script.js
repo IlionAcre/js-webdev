@@ -82,6 +82,58 @@
 // let menuElegido = elegirMenu();
 // console.log(menuElegido);
 
+// const inventario = {
+//   papa: 10,
+//   pasta: 5,
+//   pizza: 0,
+//   sushi: 1,
+//   carne: 3,
+// };
+
+// function validarPlato(plato) {
+//   const opcionesDePlato = Object.keys(inventario);
+
+//   for (let opcion of opcionesDePlato) {
+//     if (plato.startsWith(opcion)) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
+// function validarInventario(plato) {
+//   let palabraClave = plato.split(" ")[0];
+//   for (let alimento in inventario) {
+//     if (palabraClave === alimento && inventario[alimento] > 0) {
+//       return true;
+//     }
+//   }
+//   return false;
+// }
+
+// function elegirPlato() {
+//   let eleccionUsuario;
+
+//   while (true) {
+//     eleccionUsuario = prompt("¿Qué quieres?");
+//     if (validarPlato(eleccionUsuario)) {
+//       console.log("Buena elección!");
+//       if (validarInventario(eleccionUsuario)) {
+//         console.log("Perfecto, tenemos ese plato disponible.");
+//         break;
+//       } else {
+//         console.log("Que pena, no nos queda.");
+//       }
+//     } else {
+//       console.log("No tenemos ese plato");
+//     }
+//   }
+
+//   return eleccionUsuario;
+// }
+
+// console.log(elegirPlato());
+
 const inventario = {
   papa: 10,
   pasta: 5,
@@ -90,46 +142,6 @@ const inventario = {
   carne: 3,
 };
 
-function validarPlato(plato) {
-  const opcionesDePlato = Object.keys(inventario);
-
-  for (let opcion of opcionesDePlato) {
-    if (plato.startsWith(opcion)) {
-      return true;
-    }
-  }
-  return false;
-}
-
-function validarInventario(plato) {
-  let palabraClave = plato.split(" ")[0];
-  for (let alimento in inventario) {
-    if (palabraClave === alimento && inventario[alimento] > 0) {
-      return true;
-    }
-  }
-  return false;
-}
-
-function elegirPlato() {
-  let eleccionUsuario;
-
-  while (true) {
-    eleccionUsuario = prompt("¿Qué quieres?");
-    if (validarPlato(eleccionUsuario)) {
-      console.log("Buena elección!");
-      if (validarInventario(eleccionUsuario)) {
-        console.log("Perfecto, tenemos ese plato disponible.");
-        break;
-      } else {
-        console.log("Que pena, no nos queda.");
-      }
-    } else {
-      console.log("No tenemos ese plato");
-    }
-  }
-
-  return eleccionUsuario;
-}
-
-console.log(elegirPlato());
+// Dado un objeto inventario, hacer una funcion elegirPlato que
+// pregunte al usuario por un plato y devuelve un plato valido
+// el plato valido debe estar en el inventario y tener un valor mayor a 0

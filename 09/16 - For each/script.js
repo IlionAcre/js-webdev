@@ -49,11 +49,11 @@ const colores = ["rojo", "verde", "azul", "amarillo", "naranja"];
 //   console.log(objetoDelArray, indice, elMismoArrayQueLlamaLaFuncion);
 // });
 
-colores.forEach((color, indice) => {
-  if (indice % 2 === 0) {
-    colores[indice] = color.toUpperCase();
-  } else {
-    colores[indice] = "Este color era indigno";
-  }
-});
-console.log(colores);
+// colores.forEach((color, indice) => {
+//   if (indice % 2 === 0) {
+//     colores[indice] = color.toUpperCase();
+//   } else {
+//     colores[indice] = "Este color era indigno";
+//   }
+// });
+// console.log(colores);
