@@ -1,6 +1,6 @@
 h1 {
   color: red;
-  background-color: black !important;
+  background-color: black;
 }
 
 button {
@@ -12,12 +12,28 @@ button {
   cursor: pointer;
 }
 
-.boton-en-descanso {
+.mango {
+  background-color: rgb(25, 146, 146);
+}
+
+.boton {
   background-color: transparent;
   color: black;
 }
 
-.boton-en-descanso:hover {
+.check {
+  background-color: rgb(102, 241, 102);
+  color: white;
+  width: 200px;
+}
+
+.boton:hover {
   background-color: black;
   color: white;
+}
+
+.li-grande {
+  font-size: 50px;
+  font-weight: 800;
+  background-color: rgb(208, 178, 28);
 }
