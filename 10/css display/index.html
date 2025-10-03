@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Demostración de display</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Demostración de <code>display</code> en CSS</h1>
+
+    <div class="botones">
+      <button class="boton active" onclick="cambiarDisplay('block', this)">
+        Block
+      </button>
+      <button class="boton" onclick="cambiarDisplay('inline', this)">
+        Inline
+      </button>
+      <button class="boton" onclick="cambiarDisplay('inline-block', this)">
+        Inline-block
+      </button>
+      <button class="boton" onclick="cambiarDisplay('flex', this)">Flex</button>
+      <button class="boton" onclick="cambiarDisplay('grid', this)">Grid</button>
+      <button class="boton" onclick="cambiarDisplay('none', this)">None</button>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div id="contenedor" class="contenedor block">
+      <!-- Para flex/grid añadimos clases en las cajas que muestran efectos visibles -->
+      <div class="caja grow2">grow:2</div>
+      <div class="caja no-shrink">no-shrink</div>
+      <div class="caja basis-160">basis:160px</div>
+      <div class="caja order--1">order:-1</div>
+      <div class="caja self-end">self-end</div>
+      <div class="caja span-2-col">span 2 cols</div>
+      <div class="caja span-2-row">span 2 rows</div>
+      <div class="caja">normal</div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
