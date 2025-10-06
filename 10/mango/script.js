@@ -6,28 +6,20 @@ h1.innerText = "Textonuevoooo";
 const botonesMango = document.querySelectorAll(".boton");
 const liMango = document.querySelector("#mango");
 
-// botonMango.addEventListener("click", () => {
-//   liMango.style.backgroundColor = "rgba(208, 49, 28, 1)";
-// });
-
 function agrandarMango() {
-  if (!liMango.classList.contains("li-grande")) {
-    liMango.classList.add("li-grande");
-  } else {
-    liMango.classList.remove("li-grande");
-  }
+  liMango.classList.toggle("li-grande");
 }
 
 for (let boton of botonesMango) {
   boton.addEventListener("click", agrandarMango);
 }
 
-// # fontSize
-// # fontFamily
-// # color
-// # backgroundColor
-// # border
-// # cursor
-// # height
-// # width
-// # margin
+// keydown -> Solo se activa una vez, no se repite. Se activa cuando se presiona la tecla
+// keyup -> Se activa solo una vez, y se activa solo cuando se libera la tecla
+// keypress -> Se activa tantas veces como este presionada la tecla. Es decir, si dejo la tecla presionada, se activa varias veces
+
+document.addEventListener("keydown", evento => {
+  if (evento.key === "Enter") {
+    liMango.classList.toggle("li-grande");
+  }
+});
