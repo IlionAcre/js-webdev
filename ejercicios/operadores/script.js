@@ -133,3 +133,41 @@ const juego = {
 
 // TODO 7: Imprime qué equipo es más probable que gane
 // (la cuota más baja) SIN if/else ni operador ternario.
+
+//////////////////////////////
+
+// Objetivo: Dado un arreglo de eventos,
+// acumula por type usando solo objetos y ||=
+// para inicializar el contador cuando haga falta.
+const events = [
+  { type: "click" },
+  { type: "scroll" },
+  { type: "click" },
+  { type: "hover" },
+  { type: "scroll" },
+  { type: "click" },
+];
+
+const counts = {};
+
+// Si profile.preferences es truthy,
+// reemplázalo por su versión normalizada (claves minúsculas).
+// Usa &&= para NO ejecutar la normalización cuando sea falsy.
+const profile = {
+  name: "Ana",
+  preferences: { Theme: "Dark", Language: "ES" }, // prueba con undefined, null o {}
+};
+
+// Rellena metrics con defaults solo cuando una métrica sea null o undefined.
+const defaults = { retries: 3, timeoutMs: 5000, note: "n/a" };
+const metrics = { retries: 0, timeoutMs: undefined, note: "" };
+
+// Completar y limpiar un arreglo de usuarios:
+// ??= para poner id solo cuando falte.
+// ||= para asignar name por defecto si es falsy.
+// &&= para recortar bio solo si existe (truthy).
+const users = [
+  { id: undefined, name: "", bio: "  Hola mundo   " },
+  { name: "Ana", bio: "" },
+  { id: 7, name: null, bio: "  Full stack  dev  " },
+];
