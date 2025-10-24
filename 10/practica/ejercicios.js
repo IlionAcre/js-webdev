@@ -5,10 +5,12 @@ const cadena = {
     {
       id: "ST-BOG-01",
       ciudad: "Bogotá",
+      // encontrarCantidad('FR-APL', 'FR-BAN', 'FR-ONG', 'FR-BANANA');\
+      // 250
       inventario: {
         frutas: [
-          { sku: "FR-APL", nombre: "Manzana", precio: 1.1, stock: 120 },
-          { sku: "FR-BAN", nombre: "Banano", precio: 0.5, stock: 260 },
+          { sku: "FR-APL", nombre: "Manzana", precio: 1.1, stock: 20 },
+          { sku: "FR-BAN", nombre: "Banano", precio: 0.5, stock: 30 },
           { sku: "FR-MGO", nombre: "Mango", precio: 1.8, stock: 40 },
         ],
         verduras: [
@@ -101,8 +103,17 @@ const cadena = {
 };
 
 /* 1) FOR (classic for loop)
-   Objetivo: Usando un bucle `for` clásico, calcula el stock total de todos los productos de frutas en TODAS las tiendas
-   del objeto `cadena`. Guarda el número en una variable llamada `totalStockFrutas`. No uses map/filter. */
+   Objetivo: Usando un bucle `for` clásico, 
+   calcula el stock total de todos los productos de frutas en TODAS las tiendas
+   del objeto `cadena`. 
+   Guarda el número en una variable llamada `totalStockFrutas`. 
+   No uses map/filter. */
+
+// let listaFrutas = ["papaya", "mango", "banana", "kiwi"];
+
+// for (let i = 0; i < listaFrutas.length; i++) {
+//   console.log(listaFrutas[i]);
+// }
 
 /* 2) FOR...OF
    Objetivo: Itera `tiendas` con `for...of` y construye un arreglo `skusBogota` que contenga los SKUs de TODOS los productos
@@ -113,37 +124,155 @@ const cadena = {
    (frutas/verduras/granos) y cuenta cuántas categorías distintas tienen al menos un producto con stock < 50.
    Guarda el conteo en `categoriasBajoStock`. */
 
+// let objetoPersona = {
+//   nombre: "Pepe",
+//   edad: 25,
+//   sexo: "M",
+//   direccion: {
+//     calle: "Calle 1",
+//     numero: 123,
+//     ciudad: "Bogotá",
+//   },
+// };
+
+// for (const propiedad in objetoPersona) {
+//   // propiedad = 'direccion'
+//   // console.log(objetoPersona['direccion']);
+//   console.log(objetoPersona[propiedad]);
+// }
+
 /* 4) forEach
-   Objetivo: Crea un arreglo `nombresMensajerosActivos` con los nombres de todos los mensajeros ACTIVOS en TODAS las `tiendas`.
+   Objetivo: Crea un arreglo `nombresMensajerosActivos` con los 
+   nombres de todos los mensajeros ACTIVOS en TODAS las `tiendas`.
    Usa al menos un `forEach` en tu solución. */
 
+// let array = ["papa", "mama", "perro", "gato"];
+
+// array.forEach((miembro, indice) => {
+//   for (let letra of miembro) {
+//     if (letra === "a") {
+//       console.log(miembro, indice);
+//       break;
+//     }
+//   }
+// });
+
 /* 5) WHILE
-   Objetivo: Comenzando desde el índice 0 del arreglo `mensajeros` de la tienda de Medellín, usa un bucle `while` para agregar
-   los IDs de los mensajeros a un arreglo `idsMensajerosMDEHastaCapacidad7` HASTA que encuentres el primer mensajero cuya
+   Objetivo: Comenzando desde el índice 0 del arreglo `mensajeros` 
+   de la tienda de Medellín, usa un bucle `while` para agregar
+   los IDs de los mensajeros a un arreglo `idsMensajerosMDEHastaCapacidad7` 
+   HASTA que encuentres el primer mensajero cuya
    `capacidad` sea >= 7, incluyéndolo. (Detente una vez lo incluyas.) */
 
 /* 6) ARRAY DESTRUCTURING
    Objetivo: De los dos primeros productos de `frutas` de la tienda de Bogotá, usa desestructuración de arreglo para extraer sus `sku`
    en variables `primerSkuFruta` y `segundoSkuFruta`. No accedas por índice después; usa las variables desestructuradas. */
 
+// const coordenadas = [
+//   [1, 2],
+//   [3, 4],
+//   [5, 6],
+// ];
+
+// for (let [x, y] of coordenadas) {
+//   console.log(y);
+// }
+
 /* 7) OBJECT DESTRUCTURING
    Objetivo: De `cadena.configuracion.entrega`, desestructura `maximoPorMensajeroPorDia` a una variable con el mismo nombre y
    crea un string `reglaEntrega` así: "Máximo por mensajero: X". Usa desestructuración en la asignación. */
 
+// const objetoPrueba = {};
+// console.log(objetoPrueba);
+
+// objetoPrueba["persona"] = "Sara";
+// objetoPrueba["edad"] = 22;
+// objetoPrueba["sexo"] = "F";
+// console.log(objetoPrueba);
+
 /* 8) SPREAD OPERATOR (...)
    Objetivo: Construye un nuevo objeto `instantaneaBogota` que copie superficialmente la tienda de Bogotá, pero con una propiedad
-   adicional `marcaDeTiempo` (usa Date.now()). Usa el operador spread al menos una vez para objetos y otra para arreglos. */
+   adicional `marcaDeTiempo` (usa Date()). Usa el operador spread al menos una vez para objetos y otra para arreglos. */
+
+// let persona = { nombre: "Sara", edad: 22, sexo: "F" };
+// console.log(persona);
+
+// let personaMejorada = { ...persona, fecha: Date() };
+// console.log(personaMejorada);
+
+// let restaurante = {
+//   nombre: "Clásico Italiano",
+//   direccion: "Via Angelo Tavanti 23, Florencia, Italia",
+//   categorias: ["Italiana", "Pizzería", "Vegetariana", "Orgánica"],
+//   menuEntradas: ["Focaccia", "Bruschetta", "Pan de ajo", "Ensalada Caprese"],
+//   menuPrincipal: [{}, "Pasta", "Risotto"],
+// };
+
+// let restaurante2 = { ...restaurante.menuPrincipal };
+// console.log(restaurante2);
+// let arreglo = [1, 2, 3, 6, 7, 8, 9];
+// let [n1, n2, , ...resto] = arreglo;
+// console.log(n1, n2, resto);
 
 /* 9) REST PATTERN & REST PARAMETERS
    Objetivo: Escribe una función `sumarStocks(...skus)` que reciba cualquier número de strings SKU y retorne la suma de sus stocks
    encontrados a través de TODAS las categorías en la tienda de Bogotá. Usa parámetros rest y el patrón rest en al menos una desestructuración. */
 
+// function resta(...numeros) {
+//   console.log(codigo);
+//   console.log(numeros);
+
+// let resultado = 0;
+// for (let n of numeros) {
+//   resultado -= n;
+// }
+// console.log(resultado);
+// }
+
+// resta(12323, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+// let exampledict = {
+//   a: 1,
+//   b: 2,
+//   c: 3,
+// };
+
+// let { a, ...newDict } = exampledict;
+// console.log(newDict);
+
 /* 10) SHORT-CIRCUITING LOGICAL OPERATORS (&& and ||)
    Objetivo: Crea una variable `cuponPromoOFallback` que se convierta en el primer código de cupón verdadero encontrado en los `pedidos`
    de Esteban, O la cadena "SIN_PROMO" si ninguno es verdadero. Usa solo el cortocircuito con `||` y `&&` para navegar/revisar. */
 
+// let nombre = undefined;
+
+// if (nombre === undefined || nombre === null) {
+//   nombre = "Maria";
+// }
+// nombre ?? (nombre = "Sandra");
+// nombre ??= "Maria";
+
+// console.log(nombre);
+
+// if (!nombre) {
+//   nombre = "Maria";
+// }
+
+// nombre || (nombre = "Sandra");
+// nombre ||= "Petra";
+
+// console.log(nombre);
+
+// if (nombre) {
+//   nombre = "Maria";
+// }
+
+// nombre && (nombre = "Sandra");
+// nombre &&= "Maria";
+// console.log(nombre);
+
 /* 11) NULLISH COALESCING (??)
-   Objetivo: Lee `cadena.configuracion.banderas.preciosExperimentales` y crea una variable `preciosExp`
+   Objetivo: Lee `cadena.configur acion.banderas.preciosExperimentales` y crea una variable `preciosExp`
    que por defecto sea `false` SOLO cuando el valor sea nullish (null o undefined). Usa `??`. */
 
 /* 12) LOGICAL ASSIGNMENT OPERATORS (&&=, ||=, ??=)
@@ -158,6 +287,45 @@ const cadena = {
 /* 13) OPTIONAL CHAINING (?.)
    Objetivo: Lee de forma segura el descuento de verano desde `cadena.promociones.estacional.verano.descuento` usando `?.`.
    Si existe, guárdalo en `descuentoVerano`; de lo contrario guarda 0. Puedes combinar con `??`, pero debes usar `?.`. */
+
+// restaurante = {
+//   nombre: "Clásico Italiano",
+//   direccion: "Via Angelo Tavanti 23, Florencia, Italia",
+//   categorias: ["Italiana", "Pizzería", "Vegetariana", "Orgánica"],
+//   comidas: {
+//     menuEntradas: ["Focaccia", "Bruschetta", "Pan de ajo", "Ensalada Caprese"],
+//     menuPrincipal: ["Pizza", "Pasta", "Risotto"],
+//   },
+//   horarios: "12:00-23:00",
+//   pedir(entradaIndex, principalIndex) {
+//     return [
+//       this.menuEntradas[entradaIndex],
+//       this.menuPrincipal[principalIndex],
+//     ];
+//   },
+// };
+
+// horarios = {
+//   lunes: { entrada: "12:00", salida: "13:00" },
+//   martes: { entrada: "13:00", salida: "14:00" },
+//   miercoles: { entrada: "14:00", salida: "15:00" },
+//   jueves: { entrada: "15:00", salida: "16:00" },
+//   viernes: { entrada: "16:00", salida: "17:00" },
+//   sabado: { entrada: "17:00", salida: "18:00" },
+//   domingo: { entrada: "18:00", salida: "19:00" },
+// };
+
+// restaurante.pedirCena?.(1, 2);
+
+const persona = {
+  nombre: "Sara",
+  telefono: "(555) 123-4567",
+};
+console.log(persona);
+persona.edad = 22;
+persona["apellido"] = "Perez";
+
+console.log(persona);
 
 /* H1) Auditoría de Inventario (for...in + for...of + short-circuit + ??)
    Objetivo: Construye un objeto `auditoria` con claves por id de tienda. Para cada tienda, itera categorías con `for...in`,
@@ -181,3 +349,6 @@ const cadena = {
    y desestructurando `[idTienda, codigoSku]` cada vez, busca ese producto (de cualquier categoría) en la tienda.
    Crea un arreglo `etiquetas` de strings como "ID | NOMBRE | $PRECIO(+impuesto)". Si el producto falta, usa optional chaining para omitir
    y agrega "ID | FALTANTE | N/D". Usa `cadena.tasaImpuesto` para el precio final. */
+
+// For in
+// Array destructuring con for loop
