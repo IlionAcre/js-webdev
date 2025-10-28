@@ -10,3 +10,11 @@ const rateUSD = {
   GBP: 0.78,
   JPY: 151.0,
 };
+
+const amount = document.getElementById("amount");
+const convertButton = document.getElementById("convert");
+const titulo = document.querySelector("h1");
+
+convertButton.addEventListener("click", () => {
+  console.log(amount.value);
+});

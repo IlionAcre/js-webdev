@@ -38,3 +38,38 @@ const productos = [
 //   { id:1, name:"Cepillo Dental", price:5.00 },
 //   { id:2, name:"Enjuague Bucal", price:12.90 }
 // ]
+
+// haz una funcion que dada una lista de números,
+// devuelve una nueva lista sin repetidos,
+// preservando el primer orden de aparición.
+// [1, 2, 2, 3, 1] -> [1, 2, 3]
+
+// haz una funcion que devuelva la intersección de dos listas sin repetidos.
+// [1, 2, 3, 4], [3, 4, 5] -> [3, 4]
+
+// haz una funcion que dado un universo U y una lista de subconjuntos S,
+// seleccione un conjunto mínimo de subconjuntos que cubran todos los elementos de U.
+// U = ["a","b","c","d"], S = [["a","b"],["b","c"],["c","d"],["a","d"]] -> [["a","b"],["c","d"]]
+
+// haz una funcion que cuente cuántas veces aparece cada palabra en una cadena separada por espacios.
+// "sol sol luna" -> {sol: 2, luna: 1}
+
+// haz una funcion que dado un texto y un número k,
+// retorne las k palabras más frecuentes.
+// "a a b c c c", k=2 -> ["c", "a"]
+
+// haz una funcion que agrupe palabras que sean anagramas entre sí.
+// ["acto", "taco", "cosa", "saco"] -> [["acto","taco"],["cosa","saco"]]
+
+// haz una funcion que, dada una lista de frases,
+// devuelva un Map donde cada palabra sea una clave,
+// y su valor sea un Set con todas las frases (índices) en las que aparece esa palabra.
+// ["el sol brilla", "la luna brilla", "el sol sale"] ->
+// Map {
+//   "el" => Set {0, 2},
+//   "sol" => Set {0, 2},
+//   "brilla" => Set {0, 1},
+//   "la" => Set {1},
+//   "luna" => Set {1},
+//   "sale" => Set {2}
+// }
