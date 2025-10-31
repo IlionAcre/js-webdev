@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>User Explorer — Level 2</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>🔍 User Explorer</h1>
+    </header>
+
+    <main>
+      <div class="controls">
+        <button id="loadBtn">Load Users</button>
+        <input id="searchInput" placeholder="Search by name..." />
+      </div>
+
+      <div class="container">
+        <ul id="userList"></ul>
+        <div id="userDetails" class="details-panel">
+          <p class="muted">Select a user to see details.</p>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>
+        Powered by
+        <a href="https://jsonplaceholder.typicode.com/users" target="_blank"
+          >JSONPlaceholder</a
+        >
+      </p>
+    </footer>
+
+    <script src="ejercicios.js"></script>
+  </body>
+</html>
