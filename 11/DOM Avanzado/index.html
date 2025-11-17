@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Demo: Añadir elementos con JS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Formas de añadir elementos HTML con JavaScript</h1>
+      <p>
+        Haz clic en los botones para ver cómo cambia el DOM usando distintos
+        métodos.
+      </p>
+    </header>
+
+    <main>
+      <!-- 1. innerHTML -->
+      <section class="demo-card">
+        <h2>1. innerHTML</h2>
+        <p class="demo-description">
+          Puede reemplazar todo el contenido o concatenar HTML como texto.
+        </p>
+
+        <div id="innerHTML-container" class="demo-output">
+          <p>Contenido inicial (innerHTML)</p>
+        </div>
+
+        <div class="demo-buttons">
+          <button id="btn-innerHTML-set">
+            Reemplazar todo con innerHTML =
+          </button>
+          <button id="btn-innerHTML-append">Añadir más con innerHTML +=</button>
+        </div>
+      </section>
+
+      <!-- 2. appendChild -->
+      <section class="demo-card">
+        <h2>2. appendChild</h2>
+        <p class="demo-description">
+          Añade nodos creados con createElement al final del contenedor.
+        </p>
+
+        <div id="appendChild-container" class="demo-output"></div>
+
+        <div class="demo-buttons">
+          <button id="btn-appendChild">Añadir elemento con appendChild</button>
+        </div>
+      </section>
+
+      <!-- 3. append / prepend -->
+      <section class="demo-card">
+        <h2>3. append / prepend</h2>
+        <p class="demo-description">
+          Añaden nodos o texto al final (append) o al inicio (prepend).
+        </p>
+
+        <div id="append-prepend-container" class="demo-output">
+          <p>Elemento inicial</p>
+        </div>
+
+        <div class="demo-buttons">
+          <button id="btn-prepend">Añadir al inicio (prepend)</button>
+          <button id="btn-append">Añadir al final (append)</button>
+        </div>
+      </section>
+
+      <!-- 4. insertAdjacentHTML -->
+      <section class="demo-card">
+        <h2>4. insertAdjacentHTML</h2>
+        <p class="demo-description">
+          Inserta HTML en posiciones específicas sin borrar el contenido.
+        </p>
+
+        <div class="demo-output-wrapper">
+          <div id="insertAdjacentHTML-container" class="demo-output">
+            <div id="insertAdjacentHTML-reference" class="reference-box">
+              Elemento de referencia
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-buttons">
+          <button data-pos="beforebegin" class="btn-insertAdjacentHTML">
+            beforebegin
+          </button>
+          <button data-pos="afterbegin" class="btn-insertAdjacentHTML">
+            afterbegin
+          </button>
+          <button data-pos="beforeend" class="btn-insertAdjacentHTML">
+            beforeend
+          </button>
+          <button data-pos="afterend" class="btn-insertAdjacentHTML">
+            afterend
+          </button>
+        </div>
+      </section>
+
+      <!-- 5. insertBefore -->
+      <section class="demo-card">
+        <h2>5. insertBefore</h2>
+        <p class="demo-description">
+          Inserta un nodo antes de otro nodo hijo concreto.
+        </p>
+
+        <ul id="insertBefore-list" class="demo-output list-output">
+          <li>Elemento A</li>
+          <li>Elemento B</li>
+          <li>Elemento C</li>
+        </ul>
+
+        <div class="demo-buttons">
+          <button id="btn-insertBefore">
+            Insertar antes del segundo elemento
+          </button>
+        </div>
+      </section>
+
+      <!-- 6. replaceChild -->
+      <section class="demo-card">
+        <h2>6. replaceChild</h2>
+        <p class="demo-description">Reemplaza un nodo hijo por otro nuevo.</p>
+
+        <div id="replaceChild-container" class="demo-output">
+          <p id="replaceChild-old">Soy el contenido viejo</p>
+        </div>
+
+        <div class="demo-buttons">
+          <button id="btn-replaceChild">Reemplazar contenido</button>
+        </div>
+      </section>
+
+      <!-- 7. document.write -->
+      <section class="demo-card">
+        <h2>7. document.write (no recomendado)</h2>
+        <p class="demo-description">
+          Aquí se usa en una nueva ventana para no borrar esta página.
+        </p>
+
+        <div class="demo-buttons">
+          <button id="btn-documentWrite">
+            Abrir nueva ventana con document.write
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Juega con los botones y mira cómo cambia el DOM.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

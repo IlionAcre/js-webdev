@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Demostración: Añadir elementos HTML con JS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Demostración de diferentes formas de añadir elementos</h1>
+    <p>El JS ejecuta cada método automáticamente al cargar la página.</p>
+
+    <div class="box">
+      <h2>1. innerHTML</h2>
+      <div id="c1" class="result"></div>
+    </div>
+
+    <div class="box">
+      <h2>2. appendChild</h2>
+      <div id="c2" class="result"></div>
+    </div>
+
+    <div class="box">
+      <h2>3. append / prepend</h2>
+      <div id="c3" class="result">
+        <p id="elementoC3">Elemento inicial</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>4. insertAdjacentHTML</h2>
+      <div id="c4" class="result">
+        <p id="ref4">Referencia</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>5. insertBefore</h2>
+      <ul id="c5" class="result">
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>6. replaceChild</h2>
+      <div id="c6" class="result">
+        <p id="old6">Elemento original</p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

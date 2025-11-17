@@ -1,0 +1,126 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+header {
+  padding: 1.5rem 1.5rem 0.5rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+header h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.8rem;
+}
+
+header p {
+  margin: 0;
+  color: #9ca3af;
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.demo-card {
+  background: #020617;
+  border: 1px solid #1f2933;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.demo-card h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.demo-description {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.demo-output {
+  min-height: 60px;
+  border-radius: 0.5rem;
+  padding: 0.75rem;
+  background: #020617;
+  border: 1px dashed #4b5563;
+  font-size: 0.9rem;
+}
+
+.demo-output p,
+.demo-output li {
+  margin: 0.2rem 0;
+}
+
+.demo-output-wrapper {
+  padding: 0.25rem;
+}
+
+.reference-box {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid #3b82f6;
+  background: #0b1120;
+  font-size: 0.9rem;
+}
+
+.list-output {
+  list-style: none;
+  padding-left: 1rem;
+}
+
+.list-output li::before {
+  content: "• ";
+  color: #3b82f6;
+}
+
+.demo-buttons {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+button {
+  border-radius: 999px;
+  border: 1px solid #374151;
+  background: #111827;
+  color: #e5e7eb;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: transform 0.08s ease, background 0.1s ease, box-shadow 0.1s ease;
+}
+
+button:hover {
+  background: #1f2937;
+  box-shadow: 0 0 0 1px #3b82f6;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+footer {
+  border-top: 1px solid #1f2937;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-align: center;
+}
