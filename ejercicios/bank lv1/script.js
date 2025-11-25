@@ -13,7 +13,7 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const account1 = {
   owner: 'Jonas Schmedtmann',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-  interestRate: 1.2, // %
+  interestRate: 1.2,
   pin: 1111,
   type: 'premium',
 };
@@ -61,52 +61,7 @@ const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
 
 /////////////////////////////////////////////////
-// Functions
-
-const displayMovements = function (movements, sort = false) {
-  containerMovements.innerHTML = '';
-
-  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
-
-  movs.forEach(function (mov, i) {
-    const type = mov > 0 ? 'deposit' : 'withdrawal';
-
-    const html = `
-      <div class="movements__row">
-        <div class="movements__type movements__type--${type}">${
-      i + 1
-    } ${type}</div>
-        <div class="movements__value">${mov}€</div>
-      </div>
-    `;
-
-    containerMovements.insertAdjacentHTML('afterbegin', html);
-  });
-};
-
-const calcDisplayBalance = function (acc) {
-  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
-};
-
-const calcDisplaySummary = function (acc) {
-  const incomes = acc.movements
-    .filter(mov => mov > 0)
-    .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes}€`;
-
-  const out = acc.movements
-    .filter(mov => mov < 0)
-    .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out)}€`;
-
-  const interest = acc.movements
-    .filter(mov => mov > 0)
-    .map(deposit => (deposit * acc.interestRate) / 100)
-    .filter(int => int >= 1)
-    .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest}€`;
-};
+// Username generator (same as yours)
 
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
@@ -119,41 +74,72 @@ const createUsernames = function (accs) {
 };
 createUsernames(accounts);
 
-const updateUI = function (acc) {
-  // Display movements
-  displayMovements(acc.movements);
+/////////////////////////////////////////////////
+// Movement creation (same as yours)
 
-  // Display balance
-  calcDisplayBalance(acc);
+function crearMovimiento(value, indice) {
+  const tipo = value >= 0 ? 'deposit' : 'withdrawal';
+  const movimiento = document.createElement('div');
+  movimiento.classList.add('movements__row');
 
-  // Display summary
-  calcDisplaySummary(acc);
-};
+  const tipoMovimiento = document.createElement('div');
+  tipoMovimiento.classList.add('movements__type');
+  tipoMovimiento.classList.add(`movements__type--${tipo}`);
+  tipoMovimiento.textContent = indice + ' ' + tipo;
 
-///////////////////////////////////////
-// Login logic
-let currentAccount;
+  const valorMovimiento = document.createElement('div');
+  valorMovimiento.classList.add('movements__value');
+  valorMovimiento.textContent = value + '€';
+
+  movimiento.prepend(tipoMovimiento);
+  movimiento.append(valorMovimiento);
+
+  containerMovements.prepend(movimiento);
+}
+
+/////////////////////////////////////////////////
+// Shared login function (auto or manual)
+
+let currentAccount = null;
+
+function login(account) {
+  currentAccount = account;
+
+  // Show second screen
+  containerApp.style.opacity = 1;
+
+  // Welcome text
+  labelWelcome.textContent = `Welcome back, ${account.owner.split(' ')[0]}`;
+
+  // Clear old movements
+  containerMovements.innerHTML = '';
+
+  // Load this account's movements
+  account.movements.forEach((mov, idx) => crearMovimiento(mov, idx));
+}
+
+/////////////////////////////////////////////////
+// Manual login handler (unchanged logic)
 
 btnLogin.addEventListener('click', function (e) {
-  // Prevent form from submitting
   e.preventDefault();
 
-  currentAccount = accounts.find(
+  const foundAcc = accounts.find(
     acc => acc.username === inputLoginUsername.value
   );
 
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    // Display UI and message
-    labelWelcome.textContent = `Welcome back, ${
-      currentAccount.owner.split(' ')[0]
-    }`;
-    containerApp.style.opacity = 1;
-
-    // Clear input fields
-    inputLoginUsername.value = inputLoginPin.value = '';
-    inputLoginPin.blur();
-
-    // Update UI
-    updateUI(currentAccount);
+  if (foundAcc?.pin === Number(inputLoginPin.value)) {
+    login(foundAcc);
+  } else {
+    labelWelcome.textContent = 'Login failed. Try again.';
   }
+
+  inputLoginUsername.value = '';
+  inputLoginPin.value = '';
+  inputLoginPin.blur();
 });
+
+/////////////////////////////////////////////////
+// 👉 Auto-login DEFAULT account1
+
+login(account1);

@@ -66,14 +66,194 @@ const nuevo6 = document.createElement("span");
 nuevo6.textContent = "Se reemplaza el elemento completo.";
 c6.replaceChild(nuevo6, old6);
 
+/// Todos los remove element funcionan con NODOS
 // 1. element.remove()
+const spanHijo = c1.querySelectorAll("p")[1];
+
+// spanHijo.remove();
 
 // 2. parent.removeChild(element)
+// c1.removeChild(spanHijo);
 
 // 3. element.innerHTML = ""
+// c1.firstChild.innerHTML = "";
+// spanHijo.textContent = "sopa";
 
 // 4. while (element.firstChild) element.removeChild(element.firstChild);
+// console.log(c1.firstChild);
+// while (c1.firstChild) {
+//   c1.removeChild(c1.firstChild);
+// }
 
 // 5. element.replaceWith(element.cloneNode(false))
+// c1.replaceWith(c2.cloneNode(false));
 
 // 6. element.outerHTML = ""
+// c1.outerHTML = "<p>Este texto fue añadido con <strong>outerHTML</strong>.</p>";
+
+// FIND array.find(callback)
+// FINDLAST array.findLast(callback)
+// FINDINDEX array.findIndex(callback)
+// FINDLASTINDEX array.findLastIndex(callback)
+// const arrayPrueba = [1, 2, 3, 4, 5, 6, 7, 5, 9, 5];
+// const numMayorQue10 = arrayPrueba.find(n => n === 19);
+// console.log(numMayorQue10);
+
+// const usuarios = [
+//   { nombre: "Ana", edad: 9, rol: "user" },
+//   { nombre: "Sebastián", edad: 12, rol: "user" },
+//   { nombre: "Luz", edad: 34, rol: "admin" },
+// ];
+
+// const mayorEdad = usuarios.findLastIndex(u => u.rol === "user");
+// console.log(mayorEdad);
+
+/// sort function
+
+// console.log([10, 5, 60, 8].sort((a, b) => a - b));
+// console.log(
+//   ["Banana", "Amarillo", "arroz", "Zorro"].sort((a, b) => {
+//     const x = a.toLowerCase();
+//     const y = b.toLowerCase();
+//     if (x < y) return -1;
+//     if (x > y) return 1;
+//     return 0;
+//   })
+// );
+
+// const personas = [
+//   { nombre: "Luis", edad: 30 },
+//   { nombre: "Ana", edad: 30 },
+//   { nombre: "Bea", edad: 20 },
+//   { nombre: "Javier", edad: 10 },
+//   { nombre: "Cocacola", edad: 20 },
+//   { nombre: "Sofia", edad: 50 },
+// ];
+
+// console.log(
+//   personas.sort((a, b) => {
+//     console.log(a.nombre, b.nombre);
+//     console.log("/////////////////");
+//     if (a.edad !== b.edad) return a.edad - b.edad;
+//     if (a.nombre < b.nombre) return -1;
+//     if (a.nombre > b.nombre) return 1;
+//     return 0;
+//   })
+// );
+
+// Sort espera un numero
+// Si el numero es negativo, a debe ir antes que b
+// Si el numero es positivo, a debe ir despues que b
+// Si el numero es 0, estan empatados, entonces no se cambian
+
+// localeCompare() Es un metodo de los strings
+// los compara 'De forma correcta', arreglando tildes, alfabetos
+
+// console.log(
+//   ["Banana", "Amarillo", "arroz", "Zorro"].sort((a, b) => {
+//     const x = a.toLowerCase();
+//     const y = b.toLowerCase();
+//     if (x < y) return -1;
+//     if (x > y) return 1;
+//     return 0;
+//   })
+// );
+// console.log(
+//   ["Banana", "Amarillo", "arroz", "Zorro"].sort((a, b) =>
+//     a.toLowerCase().localeCompare(b.toLowerCase())
+//   )
+// );
+
+// console.log(
+//   personas.sort((a, b) => {
+//     console.log(a.nombre, b.nombre);
+//     console.log("/////////////////");
+//     if (a.edad !== b.edad) return a.edad - b.edad;
+//     return a.nombre.localeCompare(b.nombre);
+//   })
+// );
+
+// .every() y .some()
+// Te devuelven boolean
+// Every devuelve true si todos los elementos cumplen la condición
+// Some devuelve true si al menos un elemento cumple la condición
+
+// console.log([1, 2, 3].every(n => n > 0));
+// const inputs = ["Jose", "Perez", "Colombia", ""];
+// console.log(inputs.every(input => input.length > 0));
+// const pedidos = [
+//   { precio: 100, pagado: true },
+//   { precio: 200, pagado: true },
+//   { precio: 400, pagado: true },
+// ];
+// console.log(pedidos.every(pedido => pedido.pagado));
+
+// console.log([1, 2, 3].some(n => n > 2));
+// const inputs = ["Jose", "Perez", "Colombia", ""];
+// console.log(inputs.some(input => input.length === 0));
+// const pedidos = [
+//   { precio: 100, pagado: false },
+//   { precio: 200, pagado: true },
+//   { precio: 400, pagado: true },
+// ];
+// console.log(pedidos.some(pedido => !pedido.pagado));
+
+// const isEven = n => n % 2 === 0;
+// const isGreaterThan10 = n => n > 10;
+// const isLessThan20 = n => n < 20;
+
+// const predicates = [isEven, isGreaterThan10, isLessThan20];
+
+// const applyPredicates = n => predicates.some(p => p(n));
+
+// console.log(applyPredicates(21));
+// console.log(applyPredicates(11));
+// console.log(applyPredicates(12));
+
+// // flat
+// // aplana un array hasta un nivel indicado
+// // si no se indica, aplana hasta el nivel 1
+// // no modifica el array original, te regrese un nuevo array
+// const arr1 = [1, [[2, [3, 4, null], 5], 6], 7, 8, [9, 10], null, undefined];
+// console.log(arr1.flat(20).filter(n => n));
+// console.log(arr1);
+
+// const pages = [
+//   [{ id: 1 }, { id: 2 }, { id: 3 }],
+//   [{ id: 4 }, [{ id: 5 }, { id: 6 }]],
+//   [{ id: 7 }, { id: 8 }, { id: 9 }],
+// ];
+// console.log(pages.flat(2));
+
+// flatMap
+
+// const arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// console.log(arr2.flatMap(n => [n, n * 2]));
+
+const phrases = [
+  "I'm a little teapot",
+  "How about a little teapot",
+  "I'm a little teapot",
+  "How about a little teapot",
+];
+const words = phrases.flatMap(phrase => phrase.split(" "));
+console.log(words);
+
+const slots = [
+  { start: 0, end: 2 },
+  { start: 3, end: 5 },
+  { start: 6, end: 8 },
+  { start: 9, end: 11 },
+];
+
+const hours = slots
+  .map(slot => {
+    const resultado = [];
+    for (let h = slot.start; h < slot.end; h++) {
+      resultado.push({ from: h, to: h + 1 });
+    }
+    return resultado;
+  })
+  .flat(2);
+
+console.log(hours);
