@@ -1,4 +1,5 @@
 "use strict";
+
 // 1. innerHTML
 // Estamos modificando la propiedad innerHTML de un elemento
 // Acepta una string formateada como HTML
@@ -230,30 +231,104 @@ const spanHijo = c1.querySelectorAll("p")[1];
 // const arr2 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 // console.log(arr2.flatMap(n => [n, n * 2]));
 
-const phrases = [
-  "I'm a little teapot",
-  "How about a little teapot",
-  "I'm a little teapot",
-  "How about a little teapot",
-];
-const words = phrases.flatMap(phrase => phrase.split(" "));
-console.log(words);
+// const phrases = [
+//   "I'm a little teapot",
+//   "How about a little teapot",
+//   "I'm a little teapot",
+//   "How about a little teapot",
+// ];
+// const words = phrases.flatMap(phrase => phrase.split(" "));
+// console.log(words);
 
-const slots = [
-  { start: 0, end: 2 },
-  { start: 3, end: 5 },
-  { start: 6, end: 8 },
-  { start: 9, end: 11 },
-];
+// const slots = [
+//   { start: 0, end: 2 },
+//   { start: 3, end: 5 },
+//   { start: 6, end: 8 },
+//   { start: 9, end: 11 },
+// ];
 
-const hours = slots
-  .map(slot => {
-    const resultado = [];
-    for (let h = slot.start; h < slot.end; h++) {
-      resultado.push({ from: h, to: h + 1 });
-    }
-    return resultado;
-  })
-  .flat(2);
+// const hours = slots
+//   .map(slot => {
+//     const resultado = [];
+//     for (let h = slot.start; h < slot.end; h++) {
+//       resultado.push({ from: h, to: h + 1 });
+//     }
+//     return resultado;
+//   })
+//   .flat(2);
 
-console.log(hours);
+// console.log(hours);
+
+// Non-destructive methods
+// const arr = [1, 2, 8, 9, 10, 23, 45, 67, 89, 123];
+// const arr2 = [...arr].reverse();
+// const arr3 = arr.toReversed();
+// console.log(arr);
+// console.log(arr2);
+// console.log(arr3);
+
+// const users = [
+//   { name: "Luis", age: 30 },
+//   { name: "Ana", age: 30 },
+//   { name: "Bea", age: 20 },
+//   { name: "Javier", age: 10 },
+// ];
+
+// const reservedNames = users.map(user => user.name).toReversed();
+// console.log(users);
+// console.log(reservedNames);
+
+// const nums = [4, 6, 1, 8, 3];
+// const sortedNums = nums.toSorted((a, b) => a - b); // sort toSorted();
+
+// console.log(nums);
+// console.log(sortedNums);
+
+// const people = [
+//   { name: "Luis", age: 30 },
+//   { name: "Ana", age: 30 },
+//   { name: "Bea", age: 20 },
+//   { name: "Javier", age: 10 },
+// ];
+
+// const sortedPeople = people.toSorted((p1, p2) => {
+//   if (p1.age !== p2.age) return p1.age - p2.age;
+//   return p1.name.localeCompare(p2.name);
+// });
+
+// console.log(people);
+// console.log(sortedPeople);
+// console.log("Danna".toLowerCase().localeCompare("danna".toLowerCase()));
+
+// Splice
+//
+// const a = [1, 2, 3, 4, 5];
+// const deleted = a.toSpliced(0, 4); // Regresar como quedaria la lista original removiendo los elementos dados
+// // SIN modificar la lista original
+// console.log(a);
+// console.log(deleted);
+
+// const letters = ["a", "c", "d"];
+// const withB = letters.toSpliced(1, 0, "b");
+// console.log(letters);
+// console.log(withB);
+
+// const nums = [10, 20, 30, 40, 50];
+// const edited = nums.toSpliced(1, 3, 99, 100);
+// console.log(nums);
+// console.log(edited);
+
+///// with
+
+const arr = [1, 2, 3, 4, 5];
+const updated = arr.with(1, 99999);
+console.log(arr);
+console.log(updated);
+
+const updated2 = arr.with(-1, "Z");
+console.log(updated2);
+
+const scores = [10, 20, 30];
+const updated3 = scores.with(1, scores[1] + 5);
+console.log(scores);
+console.log(updated3);
