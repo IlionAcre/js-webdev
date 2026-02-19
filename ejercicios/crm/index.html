@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MiniCRM — Lead Board</title>
+
+    <link rel="stylesheet" href="./assets/css/base.css" />
+    <link rel="stylesheet" href="./assets/css/sidebar.css" />
+    <link rel="stylesheet" href="./assets/css/cards.css" />
+    <link rel="stylesheet" href="./assets/css/forms.css" />
+  </head>
+
+  <body>
+    <div class="app" id="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">MC</div>
+          <div>
+            <h1>MiniCRM</h1>
+            <p>Lead board & activity</p>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Navigation">
+          <button class="navItem active" type="button" data-nav="board">
+            <span>Board</span>
+            <span class="badge" id="navCount">0</span>
+          </button>
+          <button class="navItem" type="button" data-nav="insights">
+            <span>Insights</span>
+            <span class="badge">Basic</span>
+          </button>
+          <button class="navItem" type="button" data-nav="settings">
+            <span>Settings</span>
+            <span class="badge">Local</span>
+          </button>
+        </nav>
+
+        <section class="sidebarCard" aria-label="Quick stats">
+          <h3>Quick Stats</h3>
+          <div class="kpis">
+            <div class="kpi">
+              <div>
+                <strong id="kpiTotal">0</strong>
+                <span>Total leads</span>
+              </div>
+              <div class="dot"></div>
+            </div>
+            <div class="kpi">
+              <div>
+                <strong id="kpiHot">0</strong>
+                <span>High priority</span>
+              </div>
+              <div class="dot dotRed"></div>
+            </div>
+            <div class="kpi">
+              <div>
+                <strong id="kpiToday">0</strong>
+                <span>Actions today</span>
+              </div>
+              <div class="dot dotGreen"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sidebarCard" aria-label="Tips">
+          <h3>Keyboard</h3>
+          <p class="muted">
+            <span class="kbd">/</span> Focus search &nbsp;•&nbsp;
+            <span class="kbd">N</span> New lead &nbsp;•&nbsp;
+            <span class="kbd">Esc</span> Close modal
+          </p>
+        </section>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div class="titleBlock">
+            <h2 id="viewTitle">Lead Board</h2>
+            <p id="viewSubtitle">
+              Track outreach, prioritize, and keep a clean pipeline.
+            </p>
+          </div>
+
+          <div class="actions">
+            <div class="search" role="search">
+              <span class="searchIcon" aria-hidden="true">⌕</span>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="Search by name, email, company, or tag…"
+              />
+              <span class="hint">/</span>
+            </div>
+
+            <select
+              id="priorityFilter"
+              class="select"
+              aria-label="Priority filter"
+            >
+              <option value="all">All priorities</option>
+              <option value="high">High</option>
+              <option value="med">Medium</option>
+              <option value="low">Low</option>
+            </select>
+
+            <select id="sortBy" class="select" aria-label="Sort by">
+              <option value="updatedDesc">Sort: Recently updated</option>
+              <option value="nameAsc">Sort: Name (A→Z)</option>
+              <option value="valueDesc">Sort: Deal value (High→Low)</option>
+            </select>
+
+            <button class="btn primary" id="newLeadBtn" type="button">
+              + New Lead
+            </button>
+            <button class="btn" id="exportBtn" type="button">Export</button>
+            <button class="btn danger" id="resetBtn" type="button">
+              Reset
+            </button>
+          </div>
+        </header>
+
+        <section class="views">
+          <!-- BOARD VIEW -->
+          <section class="view" id="viewBoard" data-view="board">
+            <section class="layout">
+              <section class="board" aria-label="Kanban board">
+                <div class="col" data-stage="lead">
+                  <div class="colHead">
+                    <div class="left">
+                      <strong>Leads</strong>
+                      <small id="countLead">0</small>
+                    </div>
+                    <span class="badge">New</span>
+                  </div>
+
+                  <!-- Seed cards exist in HTML (student can see structure). JS will read them on first load. -->
+                  <div class="colBody" id="colLead">
+                    <article
+                      class="card cardSeed"
+                      data-id="seed-1"
+                      data-name="Jordan Lee"
+                      data-company="Northwind Labs"
+                      data-email="jordan@northwindlabs.com"
+                      data-value="2200"
+                      data-stage="lead"
+                      data-priority="high"
+                      data-tags="referral, urgent"
+                      data-notes="Warm referral. Wants a quote by Friday."
+                    >
+                      <span class="priority p-high" aria-hidden="true"></span>
+                      <div class="cardTop">
+                        <div>
+                          <p class="name">Jordan Lee</p>
+                          <div class="meta">
+                            <span class="pill">Northwind Labs</span>
+                            <span class="pill">jordan@northwindlabs.com</span>
+                            <span class="pill">$2200</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="meta">
+                        <span class="pill tag">#referral</span>
+                        <span class="pill tag">#urgent</span>
+                      </div>
+                      <div class="cardActions">
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="edit"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="move"
+                        >
+                          Move
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="delete"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </article>
+
+                    <article
+                      class="card cardSeed"
+                      data-id="seed-2"
+                      data-name="Maya Rivera"
+                      data-company="BluePeak Health"
+                      data-email="maya@bluepeakhealth.com"
+                      data-value="5400"
+                      data-stage="lead"
+                      data-priority="high"
+                      data-tags="enterprise, security"
+                      data-notes="Interested in compliance + reporting."
+                    >
+                      <span class="priority p-high" aria-hidden="true"></span>
+                      <div class="cardTop">
+                        <div>
+                          <p class="name">Maya Rivera</p>
+                          <div class="meta">
+                            <span class="pill">BluePeak Health</span>
+                            <span class="pill">maya@bluepeakhealth.com</span>
+                            <span class="pill">$5400</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="meta">
+                        <span class="pill tag">#enterprise</span>
+                        <span class="pill tag">#security</span>
+                      </div>
+                      <div class="cardActions">
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="edit"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="move"
+                        >
+                          Move
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="delete"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </article>
+
+                    <article
+                      class="card cardSeed"
+                      data-id="seed-3"
+                      data-name="Lina Gomez"
+                      data-company="Sunset Retail"
+                      data-email="lina@sunsetretail.com"
+                      data-value="3200"
+                      data-stage="lead"
+                      data-priority="med"
+                      data-tags="ecom, integration"
+                      data-notes="Wants Shopify + email automation."
+                    >
+                      <span class="priority p-med" aria-hidden="true"></span>
+                      <div class="cardTop">
+                        <div>
+                          <p class="name">Lina Gomez</p>
+                          <div class="meta">
+                            <span class="pill">Sunset Retail</span>
+                            <span class="pill">lina@sunsetretail.com</span>
+                            <span class="pill">$3200</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="meta">
+                        <span class="pill tag">#ecom</span>
+                        <span class="pill tag">#integration</span>
+                      </div>
+                      <div class="cardActions">
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="edit"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="move"
+                        >
+                          Move
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="delete"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </article>
+
+                    <article
+                      class="card cardSeed"
+                      data-id="seed-4"
+                      data-name="Noah Brooks"
+                      data-company="LumenWorks"
+                      data-email="noah@lumenworks.io"
+                      data-value="1200"
+                      data-stage="lead"
+                      data-priority="low"
+                      data-tags="cold"
+                      data-notes="Inbound from landing page."
+                    >
+                      <span class="priority p-low" aria-hidden="true"></span>
+                      <div class="cardTop">
+                        <div>
+                          <p class="name">Noah Brooks</p>
+                          <div class="meta">
+                            <span class="pill">LumenWorks</span>
+                            <span class="pill">noah@lumenworks.io</span>
+                            <span class="pill">$1200</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="meta">
+                        <span class="pill tag">#cold</span>
+                      </div>
+                      <div class="cardActions">
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="edit"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="move"
+                        >
+                          Move
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="delete"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+
+                <div class="col" data-stage="contacted">
+                  <div class="colHead">
+                    <div class="left">
+                      <strong>Contacted</strong>
+                      <small id="countContacted">0</small>
+                    </div>
+                    <span class="badge">Follow up</span>
+                  </div>
+
+                  <div class="colBody" id="colContacted">
+                    <article
+                      class="card cardSeed"
+                      data-id="seed-5"
+                      data-name="Avery Chen"
+                      data-company="Contoso Studio"
+                      data-email="avery@contosostudio.com"
+                      data-value="900"
+                      data-stage="contacted"
+                      data-priority="med"
+                      data-tags="design"
+                      data-notes="Sent intro email. Follow-up in 2 days."
+                    >
+                      <span class="priority p-med" aria-hidden="true"></span>
+                      <div class="cardTop">
+                        <div>
+                          <p class="name">Avery Chen</p>
+                          <div class="meta">
+                            <span class="pill">Contoso Studio</span>
+                            <span class="pill">avery@contosostudio.com</span>
+                            <span class="pill">$900</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="meta">
+                        <span class="pill tag">#design</span>
+                      </div>
+                      <div class="cardActions">
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="edit"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="move"
+                        >
+                          Move
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="delete"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </article>
+
+                    <article
+                      class="card cardSeed"
+                      data-id="seed-6"
+                      data-name="Priya Singh"
+                      data-company="Cedar & Co."
+                      data-email="priya@cedarco.com"
+                      data-value="2600"
+                      data-stage="contacted"
+                      data-priority="high"
+                      data-tags="urgent, follow-up"
+                      data-notes="Asked for timeline + next steps."
+                    >
+                      <span class="priority p-high" aria-hidden="true"></span>
+                      <div class="cardTop">
+                        <div>
+                          <p class="name">Priya Singh</p>
+                          <div class="meta">
+                            <span class="pill">Cedar & Co.</span>
+                            <span class="pill">priya@cedarco.com</span>
+                            <span class="pill">$2600</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="meta">
+                        <span class="pill tag">#urgent</span>
+                        <span class="pill tag">#follow-up</span>
+                      </div>
+                      <div class="cardActions">
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="edit"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="move"
+                        >
+                          Move
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="delete"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </article>
+
+                    <article
+                      class="card cardSeed"
+                      data-id="seed-7"
+                      data-name="Ethan Moore"
+                      data-company="Atlas Systems"
+                      data-email="ethan@atlasy.com"
+                      data-value="1800"
+                      data-stage="contacted"
+                      data-priority="low"
+                      data-tags="budget"
+                      data-notes="Price sensitive. Needs options."
+                    >
+                      <span class="priority p-low" aria-hidden="true"></span>
+                      <div class="cardTop">
+                        <div>
+                          <p class="name">Ethan Moore</p>
+                          <div class="meta">
+                            <span class="pill">Atlas Systems</span>
+                            <span class="pill">ethan@atlasy.com</span>
+                            <span class="pill">$1800</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="meta">
+                        <span class="pill tag">#budget</span>
+                      </div>
+                      <div class="cardActions">
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="edit"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="move"
+                        >
+                          Move
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="delete"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+
+                <div class="col" data-stage="closed">
+                  <div class="colHead">
+                    <div class="left">
+                      <strong>Closed</strong>
+                      <small id="countClosed">0</small>
+                    </div>
+                    <span class="badge">Won/Lost</span>
+                  </div>
+
+                  <div class="colBody" id="colClosed">
+                    <article
+                      class="card cardSeed"
+                      data-id="seed-8"
+                      data-name="Sam Patel"
+                      data-company="Fabrikam"
+                      data-email="sam@fabrikam.com"
+                      data-value="3800"
+                      data-stage="closed"
+                      data-priority="low"
+                      data-tags="won"
+                      data-notes="Closed won. Onboarding next week."
+                    >
+                      <span class="priority p-low" aria-hidden="true"></span>
+                      <div class="cardTop">
+                        <div>
+                          <p class="name">Sam Patel</p>
+                          <div class="meta">
+                            <span class="pill">Fabrikam</span>
+                            <span class="pill">sam@fabrikam.com</span>
+                            <span class="pill">$3800</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="meta">
+                        <span class="pill tag">#won</span>
+                      </div>
+                      <div class="cardActions">
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="edit"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="move"
+                        >
+                          Move
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="delete"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </article>
+
+                    <article
+                      class="card cardSeed"
+                      data-id="seed-9"
+                      data-name="Chloe Martin"
+                      data-company="Nova Creative"
+                      data-email="chloe@novacreative.design"
+                      data-value="650"
+                      data-stage="closed"
+                      data-priority="med"
+                      data-tags="lost"
+                      data-notes="Went with another vendor."
+                    >
+                      <span class="priority p-med" aria-hidden="true"></span>
+                      <div class="cardTop">
+                        <div>
+                          <p class="name">Chloe Martin</p>
+                          <div class="meta">
+                            <span class="pill">Nova Creative</span>
+                            <span class="pill">chloe@novacreative.design</span>
+                            <span class="pill">$650</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="meta">
+                        <span class="pill tag">#lost</span>
+                      </div>
+                      <div class="cardActions">
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="edit"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="move"
+                        >
+                          Move
+                        </button>
+                        <button
+                          class="miniBtn"
+                          type="button"
+                          data-action="delete"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </article>
+                  </div>
+                </div>
+              </section>
+
+              <aside class="panel" aria-label="Activity panel">
+                <div class="panelHead">
+                  <strong>Activity</strong>
+                  <button class="miniBtn" id="clearActivityBtn" type="button">
+                    Clear
+                  </button>
+                </div>
+                <div class="panelBody">
+                  <div class="activity" id="activityFeed"></div>
+                </div>
+              </aside>
+            </section>
+          </section>
+
+          <!-- INSIGHTS VIEW -->
+          <section class="view hidden" id="viewInsights" data-view="insights">
+            <div class="pageCard">
+              <h3>Insights</h3>
+              <p class="muted">
+                Basic metrics can live here (top tags, pipeline value,
+                conversion).
+              </p>
+              <div class="grid2">
+                <div class="statCard">
+                  <strong id="insightPipeline">$0</strong>
+                  <span class="muted">Total pipeline value</span>
+                </div>
+                <div class="statCard">
+                  <strong id="insightTopTag">—</strong>
+                  <span class="muted">Most common tag</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- SETTINGS VIEW -->
+          <section class="view hidden" id="viewSettings" data-view="settings">
+            <div class="pageCard">
+              <h3>Settings</h3>
+              <p class="muted">
+                Local-only demo: toggles and preferences can go here later.
+              </p>
+              <div class="grid2">
+                <div class="statCard">
+                  <strong>Storage</strong>
+                  <span class="muted">Uses localStorage</span>
+                </div>
+                <div class="statCard">
+                  <strong>Theme</strong>
+                  <span class="muted">Dark (static for now)</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <!-- MODAL -->
+    <div
+      class="modalBackdrop hidden"
+      id="modalBackdrop"
+      aria-hidden="true"
+    ></div>
+
+    <dialog class="modal" id="leadModal" aria-labelledby="modalTitle">
+      <form id="leadForm" method="dialog">
+        <header class="modalHead">
+          <div>
+            <h3 id="modalTitle">New Lead</h3>
+            <p class="muted" id="modalSubtitle">Add a lead to the pipeline.</p>
+          </div>
+          <button
+            class="iconBtn"
+            id="closeModalBtn"
+            type="button"
+            aria-label="Close"
+          >
+            ✕
+          </button>
+        </header>
+
+        <section class="modalBody">
+          <input type="hidden" id="leadId" />
+
+          <div class="grid2">
+            <label class="field">
+              <span>Full name</span>
+              <input id="fullName" placeholder="e.g. Jordan Lee" required />
+            </label>
+
+            <label class="field">
+              <span>Company</span>
+              <input id="company" placeholder="e.g. Northwind Labs" />
+            </label>
+          </div>
+
+          <div class="grid2">
+            <label class="field">
+              <span>Email</span>
+              <input id="email" type="email" placeholder="jordan@company.com" />
+            </label>
+
+            <label class="field">
+              <span>Deal value (USD)</span>
+              <input
+                id="value"
+                type="number"
+                min="0"
+                step="50"
+                placeholder="e.g. 1500"
+              />
+            </label>
+          </div>
+
+          <div class="grid2">
+            <label class="field">
+              <span>Stage</span>
+              <select id="stage">
+                <option value="lead">Leads</option>
+                <option value="contacted">Contacted</option>
+                <option value="closed">Closed</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Priority</span>
+              <select id="priority">
+                <option value="med">Medium</option>
+                <option value="high">High</option>
+                <option value="low">Low</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Tags (comma separated)</span>
+            <input id="tags" placeholder="e.g. urgent, referral, enterprise" />
+          </label>
+
+          <label class="field">
+            <span>Notes</span>
+            <textarea
+              id="notes"
+              rows="4"
+              placeholder="Add context for the next follow-up..."
+            ></textarea>
+          </label>
+
+          <div class="formError hidden" id="formError" role="alert"></div>
+        </section>
+
+        <footer class="modalFoot">
+          <button class="btn" id="cancelBtn" type="button">Cancel</button>
+          <button class="btn primary" id="saveBtn" type="submit">Save</button>
+        </footer>
+      </form>
+    </dialog>
+
+    <script src="./assets/js/app.js" defer></script>
+  </body>
+</html>

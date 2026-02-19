@@ -773,67 +773,67 @@ const spanHijo = c1.querySelectorAll("p")[1];
 //   return false; // Caso base donde no se encuentra nada
 // }
 
-const dateformat = new Intl.DateTimeFormat("es-ES", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-  weekday: "long",
-  hour: "numeric",
-  hour12: false,
-  minute: "numeric",
-}).format(new Date());
+// const dateformat = new Intl.DateTimeFormat("es-ES", {
+//   year: "numeric",
+//   month: "long",
+//   day: "numeric",
+//   weekday: "long",
+//   hour: "numeric",
+//   hour12: false,
+//   minute: "numeric",
+// }).format(new Date());
 
-const numberFormat = new Intl.NumberFormat("es-ES", {
-  style: "currency",
-  currency: "MXN",
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-}).format(123400);
+// const numberFormat = new Intl.NumberFormat("es-ES", {
+//   style: "currency",
+//   currency: "MXN",
+//   minimumFractionDigits: 2,
+//   maximumFractionDigits: 2,
+// }).format(123400);
 
-const collatorFormat = ["Zapato", "árbol", "ñafrar"].sort(
-  new Intl.Collator("es").compare
-);
+// const collatorFormat = ["Zapato", "árbol", "ñafrar"].sort(
+//   new Intl.Collator("es").compare
+// );
 
-const listFormat = new Intl.ListFormat("fr-FR", {
-  style: "short",
-  type: "disjunction",
-}).format(["Zapato", "árbol", "ñafrar"]);
+// const listFormat = new Intl.ListFormat("fr-FR", {
+//   style: "short",
+//   type: "disjunction",
+// }).format(["Zapato", "árbol", "ñafrar"]);
 
-const displayNames = new Intl.DisplayNames(["es", "en"], {
-  type: "region",
-});
+// const displayNames = new Intl.DisplayNames(["es", "en"], {
+//   type: "region",
+// });
 
-const segmenter = new Intl.Segmenter("es-ES", {
-  granularity: "word",
-});
+// const segmenter = new Intl.Segmenter("es-ES", {
+//   granularity: "word",
+// });
 
-const options = {
-  style: "long",
-  numeric: "always",
-};
-const relativeTimeFormat = new Intl.RelativeTimeFormat("en-US", options).format(
-  -30,
-  "day"
-);
+// const options = {
+//   style: "long",
+//   numeric: "always",
+// };
+// const relativeTimeFormat = new Intl.RelativeTimeFormat("en-US", options).format(
+//   -30,
+//   "day"
+// );
 
-const pluralRulesFormat = new Intl.PluralRules("ar").select(11);
+// const pluralRulesFormat = new Intl.PluralRules("ar").select(11);
 
-const localeFormat = new Intl.Locale("en-GB-u-hc-h24");
+// const localeFormat = new Intl.Locale("en-GB-u-hc-h24");
 
-// setTimeout
-// callback
+// // setTimeout
+// // callback
 
-function callback(name) {
-  console.log(`Hola ${name}`);
-}
+// function callback(name) {
+//   console.log(`Hola ${name}`);
+// }
 
-const jhon5 = () => callback("Jhon5");
-function jhon3() {
-  callback("Jhon3");
-}
-function jhon1() {
-  callback("Jhon1");
-}
+// const jhon5 = () => callback("Jhon5");
+// function jhon3() {
+//   callback("Jhon3");
+// }
+// function jhon1() {
+//   callback("Jhon1");
+// }
 
 // setTimeout(jhon5, 5000);
 // setTimeout(jhon3, 3000);
@@ -863,26 +863,26 @@ function jhon1() {
 //   { mensaje: "Tarea 3", retardo: 3000 },
 // ]);
 
-function tareaCiclicaDinamica(frecuenciaInicial) {
-  let ciclos = 0;
-  let frecuenciaActual = frecuenciaInicial;
-  const loop = () => {
-    ciclos++;
-    if (ciclos > 5 || frecuenciaActual < 100) {
-      // Caso base
-      console.log(`Ciclo detenido`);
-      return;
-    }
-    console.log(
-      `Ciclo ${ciclos}, frecuencia: ${frecuenciaActual.toFixed(0)}ms`
-    );
-    frecuenciaActual *= 0.5;
-    setTimeout(loop, frecuenciaActual);
-  };
-  loop();
-}
+// function tareaCiclicaDinamica(frecuenciaInicial) {
+//   let ciclos = 0;
+//   let frecuenciaActual = frecuenciaInicial;
+//   const loop = () => {
+//     ciclos++;
+//     if (ciclos > 5 || frecuenciaActual < 100) {
+//       // Caso base
+//       console.log(`Ciclo detenido`);
+//       return;
+//     }
+//     console.log(
+//       `Ciclo ${ciclos}, frecuencia: ${frecuenciaActual.toFixed(0)}ms`
+//     );
+//     frecuenciaActual *= 0.5;
+//     setTimeout(loop, frecuenciaActual);
+//   };
+//   loop();
+// }
 
-tareaCiclicaDinamica(5000);
+// tareaCiclicaDinamica(5000);
 
 // setTimeout(() => {
 //   console.log("Tarea 1");
@@ -891,3 +891,14 @@ tareaCiclicaDinamica(5000);
 // setTimeout(() => {
 //   console.log("Tarea 2");
 // }, 100);
+
+let ciclos = 5;
+function saludar() {
+  console.log("Hola");
+  ciclos--;
+  if (ciclos === 0) {
+    clearInterval(intervalo);
+  }
+}
+
+const intervalo = setInterval(saludar, 1000);

@@ -1,0 +1,67 @@
+:root {
+  --bg: #0b1220;
+  --panel: #0f1a2c;
+  --panel2: #101f36;
+  --muted: #8ea0bd;
+  --text: #e9f0ff;
+  --line: rgba(255, 255, 255, 0.08);
+  --brand: #6ea8ff;
+  --brand2: #8b5cf6;
+  --good: #22c55e;
+  --warn: #f59e0b;
+  --bad: #ef4444;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  --radius: 18px;
+  --radius2: 14px;
+  --mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  --sans:
+    ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: var(--sans);
+  background:
+    radial-gradient(
+      900px 500px at 15% 10%,
+      rgba(110, 168, 255, 0.15),
+      transparent 60%
+    ),
+    radial-gradient(
+      800px 450px at 85% 20%,
+      rgba(139, 92, 246, 0.14),
+      transparent 55%
+    ),
+    radial-gradient(
+      900px 500px at 30% 90%,
+      rgba(34, 197, 94, 0.1),
+      transparent 60%
+    ),
+    var(--bg);
+  color: var(--text);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+:root {
+  color-scheme: dark;
+}

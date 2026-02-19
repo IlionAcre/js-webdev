@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Práctica de Manipulación del DOM</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Práctica de DOM con JavaScript</h1>
+    </header>
+
+    <main id="principal-contenedor">
+      <section id="lista-elementos">
+        <h2>Elementos Existentes</h2>
+        <ul id="lista-padre">
+          <li class="item-existente" id="item1">Item Inicial 1</li>
+          <li class="item-existente" id="item2">
+            Item Inicial 2 (Para remover)
+          </li>
+        </ul>
+      </section>
+
+      <section id="botones-accion">
+        <h2>Acciones</h2>
+        <button id="btn-crear">Crear y Añadir un DIV</button>
+        <button id="btn-remover">Remover el Item 2</button>
+        <button id="btn-prepend">Añadir al inicio (prepend)</button>
+      </section>
+
+      <section id="contenedor-resultado">
+        <h2>Contenedor de Resultados</h2>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
